@@ -6,10 +6,16 @@ describe("Calculator", () => {
   it('should have working number buttons', () => {
     cy.get('#number2').click();
     cy.get('.display').should('contain', '2')
-  })
-})
+  });
 
-  it('should be able to ')
+  it('should be able to add numbers together', () => {
+    cy.get('#number1').click();
+    cy.get('#operator-add').click();
+    cy.get('#number4').click();
+    cy.get('.display').should('contain', '5')
+  });
+
+})
 
 // calculator.add() - add 1 to 4 and get 5
 // calculator.subtract() subtract 4 from 7 and get 3
