@@ -107,5 +107,25 @@ describe('Calculator', () => {
     expect(runningTotal.textContent).toEqual('5');
   });
 
+  it ('should be able to clear the running total without affecting the calculation', () => {
+    const button1 = container.getByTestId('number1');
+    const button2 = container.getByTestId('number2');
+    const clear = container.getByTestId('clear');
+    const add = container.getByTestId('operator-add');
+    const equals = container.getByTestId('operator-equals');
+    const runningTotal = container.getByTestId('running-total');
+
+    fireEvent.click(button2);
+    fireEvent.click(add);
+    fireEvent.click(button1);
+    fireEvent.click(equals);
+    fireEvent.click(clear);
+    fireEvent.click(add);
+    fireEvent.click(button2);
+    fireEvent.click(equals);
+
+    expect(runningTotal.textContent).toEqual('5');
+  });
+
 
 });
