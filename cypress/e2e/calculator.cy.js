@@ -8,22 +8,13 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', '2')
   });
 
-  it('should be able to add numbers together', () => {
-    cy.get('#number1').click();
-    cy.get('#operator-add').click();
-    cy.get('#number4').click();
-    cy.get('.display').should('contain', '5')
+  it('should update display according to number buttons', () => {
+    cy.get('#number2').click();
+    cy.get('.display').should('contain', '2')
   });
 
-})
+});
 
-// calculator.add() - add 1 to 4 and get 5
-// calculator.subtract() subtract 4 from 7 and get 3
-// calculator.multiply() - multiply 3 by 5 and get 15
-// calculator.divide() - divide 21 by 7 and get 3
-// calculator.numberClick() - concatenate multiple number button clicks
-// calculator.operatorClick() - chain multiple operations together
-// calculator.clearClick() - clear the running total without affecting the calculation
 
 
 // Do the number buttons update the display of the running total?
