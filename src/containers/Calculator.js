@@ -13,6 +13,7 @@ function App() {
   const numberClick =  (number) => {
 
     let tempTotal = runningTotal;
+
     if ( runningTotal === 0 || newTotal){
       if(calculatedTotal){
         setPreviousTotal(calculatedTotal);
@@ -21,6 +22,7 @@ function App() {
       }
       tempTotal = 0
       setNewTotal(false);
+
     }
 
     setRunningTotal(parseFloat("" + tempTotal + number));
@@ -98,11 +100,18 @@ function App() {
     setCalculatedTotal(calculatedNumber);
   }
 
-
+  var newRunningTotal;
+  if (runningTotal == 'Infinity') {
+      newRunningTotal = '∞' 
+    }
+    else {
+      newRunningTotal = runningTotal
+    }
+  
   return (
     <div className="container">
     <div className="calculator">
-      <div data-testid="running-total" id="running-total" className="display">{ runningTotal }</div>
+      <div data-testid="running-total" id="running-total" className="display">{ newRunningTotal }</div>
       <KeyPad 
       handleNumber={numberClick} 
       handleOperator={operatorClick} 

@@ -100,14 +100,24 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', '-1e+26')
   });
 
+  // it('should output as expected in exceptional circumstances: dividing by zero', () => {
+  //   cy.get('#number9').click();
+  //   cy.get('#operator-divide').click();
+  //   cy.get('#number0').click();
+  //   cy.get('#operator-equals').click();
+  //   cy.get('.display').should('contain', 'Infinity')
+  // });
+
   it('should output as expected in exceptional circumstances: dividing by zero', () => {
     cy.get('#number9').click();
     cy.get('#operator-divide').click();
     cy.get('#number0').click();
     cy.get('#operator-equals').click();
-    cy.get('.display').should('contain', 'Infinity')
+    cy.get('.display').should('contain', '∞')
   });
   
+
+  //Calculator does not output as expected when 0 is first typed input.
   it('should output as expected in exceptional circumstances: multiplying by zero', () => {
     cy.get('#number0').click();
     cy.get('#operator-multiply').click();
