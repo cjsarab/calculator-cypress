@@ -13,6 +13,110 @@ describe("Calculator", () => {
     cy.get('.display').should('contain', '2')
   });
 
+  it('should update the display with the result of the arithmetical operation', () => {
+    cy.get('#number2').click();
+    cy.get('#operator-add').click();
+    cy.get('#number2').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '4')
+  });
+
+  it('should be able to chain multiple operations together', () => {
+    cy.get('#number2').click();
+    cy.get('#operator-add').click();
+    cy.get('#number2').click();
+    cy.get('#operator-add').click();
+    cy.get('#number2').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '6')
+  });
+
+  it('should output as expected for a range of numbers: positive', () => {
+    cy.get('#number4').click();
+    cy.get('#operator-add').click();
+    cy.get('#number4').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '8')
+  });
+
+  it('should output as expected for a range of numbers: negative', () => {
+    cy.get('#number4').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number8').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '-4')
+  });
+
+  it('should output as expected for a range of numbers: decimals', () => {
+    cy.get('#number4').click();
+    cy.get('#decimal').click();
+    cy.get('#number5').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number2').click();
+    cy.get('#decimal').click();
+    cy.get('#number2').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '2.3')
+  });
+
+  it('should output as expected for a range of numbers: negative decimals', () => {
+    cy.get('#number4').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number8').click();
+    cy.get('#decimal').click();
+    cy.get('#number5').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number2').click();
+    cy.get('#decimal').click();
+    cy.get('#number2').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '-6.7')
+  });
+
+  it('should output as expected for a range of numbers: large numbers', () => {
+    cy.get('#number9').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '2541865828329')
+  });
+  
+  it('should output as expected for a range of numbers: large negative numbers', () => {
+    cy.get('#number1').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number1').click();
+    cy.get('#number0').click();
+    cy.get('#number1').click();
+    cy.get('#operator-equals').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '-1e+26')
+  });
+
+  it('should output as expected in exceptional circumstances: dividing by zero', () => {
+    cy.get('#number9').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number0').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', 'Infinity')
+  });
+  
+  it('should output as expected in exceptional circumstances: multiplying by zero', () => {
+    cy.get('#number0').click();
+    cy.get('#operator-multiply').click();
+    cy.get('#number9').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '0')
+  });
+  
+
 });
 
 
