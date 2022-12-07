@@ -108,19 +108,19 @@ function App() {
       newRunningTotal = runningTotal
     }
   
-  return (
-    <div className="container">
-    <div className="calculator">
-      <div data-testid="running-total" id="running-total" className="display">{ newRunningTotal }</div>
-      <KeyPad 
-      handleNumber={numberClick} 
-      handleOperator={operatorClick} 
-      handleClear={clearClick}
-      handleDecimal={handleDecimal}
-      />
+    return (
+      <div className="container">
+      <div className="calculator">
+        <div data-testid="running-total" id="running-total" className="display">{runningTotalToOutput }</div>
+        <KeyPad 
+        handleNumber={numberClick} 
+        handleOperator={operatorClick} 
+        handleClear={clearClick}
+        handleDecimal={handleDecimal}
+        />
+      </div>
     </div>
-  </div>
-  );
+    );
 }
 
 export default App;

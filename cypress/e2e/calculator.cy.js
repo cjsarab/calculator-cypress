@@ -125,6 +125,15 @@ describe("Calculator", () => {
     cy.get('#operator-equals').click();
     cy.get('.display').should('contain', '0')
   });
+
+  it('should give Infinity when dividing by zero', () => {
+    cy.get('#number3').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number0').click();
+
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '∞')
+  });
   
 
 });
